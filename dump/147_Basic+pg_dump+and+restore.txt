@@ -1,0 +1,12 @@
+pg_dump northwind -p 5433 -h localhost  -U postgres > northwind.sql
+
+createdb northwind_bak -p 5433 -h localhost  -U postgres
+
+psql northwind_bak -p 5433 -h localhost  -U postgres <  northwind.sql
+
+
+pg_dump usda -p 5433 -h localhost  -U postgres > usda.sql
+
+createdb usda_bak -p 5433 -h localhost  -U postgres
+
+psql usda_bak -p 5433 -h localhost  -U postgres <  usda_bak.sql

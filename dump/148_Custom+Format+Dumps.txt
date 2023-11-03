@@ -1,0 +1,12 @@
+pg_dump -Fc northwind -p 5433 -h localhost  -U postgres > northwind.fc
+
+ls -l northwind.*
+
+pg_restore -j 4  -p 5433 -h localhost  -U postgres -d northwind_bak northwind.fc
+
+pg_restore -j 4  -p 5433 -h localhost  -U postgres -d northwind_bak -t usstates northwind.fc
+
+
+pg_dump -Fc usda -p 5433 -h localhost  -U postgres > usda.fc
+
+pg_restore -j 4  -p 5433 -h localhost  -U postgres -d usda -t weight  usda.fc

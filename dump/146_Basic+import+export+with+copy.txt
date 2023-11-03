@@ -1,0 +1,19 @@
+psql -p 5433 -h localhost -d northwind -U postgres
+
+\COPY customers TO 'customers.txt';
+
+\h COPY
+
+\COPY customers TO 'customers.csv'
+WITH (HEADER, QUOTE '"');
+
+\COPY customers TO 'customers.csv'
+WITH (FORMAT CSV, HEADER, QUOTE '"',
+FORCE_QUOTE (companyname, contactname,contacttitle, address, city, region, country));
+
+
+\COPY (SELECT * FROM orders WHERE orderdate BETWEEN '01-01-1996' AND '12-31-1996')
+TO 'orders1996.csv' WITH (FORMAT CSV, HEADER);
+
+\COPY (SELECT * FROM order_details WHERE productid=11)
+TO 'queso_order_details.csv' WITH (FORMAT CSV, HEADER);
